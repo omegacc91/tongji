@@ -1691,7 +1691,7 @@ function initMapChart() {
 
   if (currentMapType === 'china') {
     // 显示中国地图
-    mapUrl = 'https://cdn.jsdelivr.net/npm/echarts/map/json/china.json';
+    mapUrl = '/china.json';
     mapName = 'china';
     mapData = chinaProvinceData.map(item => ({
       ...item,
@@ -1699,7 +1699,7 @@ function initMapChart() {
     }));
   } else {
     // 显示世界地图
-    mapUrl = 'https://cdn.jsdelivr.net/npm/echarts/map/json/world.json';
+    mapUrl = '/world.json';
     mapName = 'world';
     mapData = countryData.map(item => ({
       ...item,
