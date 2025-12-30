@@ -29,9 +29,50 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
 
-    <!-- 统计表格 -->
+
+
+    <!-- 图表区域 (Order: Region -> Trend) -->
+    <div class="charts-container">
+      <!-- 地域分布 -->
+      <div class="chart-item">
+        <div class="chart-header">
+          <h3>地域分布</h3>
+          <span class="chart-action">›</span>
+        </div>
+        <div class="map-container">
+          <div class="map-tabs">
+            <button>按省</button>
+            <button class="active">按国家</button>
+          </div>
+          <div class="map-content">
+            <div class="map-left">
+              <div id="map-chart" class="chart"></div>
+            </div>
+            <div class="map-right">
+              <div class="map-right-header">
+                <span>国家/省份</span>
+                <span id="ranking-metric">浏览量(PV)</span>
+                <span>占比</span>
+              </div>
+              <div id="map-ranking" class="map-ranking"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 趋势图 -->
+      <div class="chart-item">
+        <div class="chart-header">
+          <h3>趋势图</h3>
+          <span class="chart-action">›</span>
+        </div>
+        <div id="trend-chart" class="chart"></div>
+      </div>
+    </div>
+
+    <!-- 统计表格 (Order: Traffic) -->
     <div class="stats-table-container">
-      <h3 id="stats-title">今日流量</h3>
+      <h3 id="stats-title">实时信息</h3>
       <div class="stats-table-wrapper">
         <table class="stats-table">
           <thead>
@@ -75,45 +116,6 @@ document.querySelector('#app').innerHTML = `
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-
-    <!-- 图表区域 -->
-    <div class="charts-container">
-      <!-- 趋势图 -->
-      <div class="chart-item">
-        <div class="chart-header">
-          <h3>趋势图</h3>
-          <span class="chart-action">›</span>
-        </div>
-        <div id="trend-chart" class="chart"></div>
-      </div>
-
-      <!-- 地域分布 -->
-      <div class="chart-item">
-        <div class="chart-header">
-          <h3>地域分布</h3>
-          <span class="chart-action">›</span>
-        </div>
-        <div class="map-container">
-          <div class="map-tabs">
-            <button>按省</button>
-            <button class="active">按国家</button>
-          </div>
-          <div class="map-content">
-            <div class="map-left">
-              <div id="map-chart" class="chart"></div>
-            </div>
-            <div class="map-right">
-              <div class="map-right-header">
-                <span>国家/省份</span>
-                <span id="ranking-metric">浏览量(PV)</span>
-                <span>占比</span>
-              </div>
-              <div id="map-ranking" class="map-ranking"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -348,8 +350,8 @@ const translations = {
   'Chinese': '中文',
 
   // 统计表格
-  'Today\'s Traffic': '今日流量',
-  '今日流量': 'Today\'s Traffic',
+  'Today\'s Traffic': '实时信息',
+  '实时信息': 'Today\'s Traffic',
   'Yesterday\'s Traffic': '昨日流量',
   '昨日流量': 'Yesterday\'s Traffic',
   'Last 7 Days Traffic': '最近7天流量',
@@ -513,8 +515,8 @@ function updateAllText() {
 
   // 6. 更新图表标题
   const chartTitles = document.querySelectorAll('.chart-header h3');
-  if (chartTitles[0]) chartTitles[0].textContent = t('趋势图');
-  if (chartTitles[1]) chartTitles[1].textContent = t('地域分布');
+  if (chartTitles[0]) chartTitles[0].textContent = t('地域分布');
+  if (chartTitles[1]) chartTitles[1].textContent = t('趋势图');
 
   // 7. 更新地图标签页文本
   const mapTabs = document.querySelectorAll('.map-tabs button');
@@ -567,7 +569,7 @@ function updateStatsTable() {
   // 根据当前状态生成标题
   let title = ''
   switch (globalState.range) {
-    case 'today': title = t('今日流量'); break
+    case 'today': title = t('实时信息'); break
     case 'yesterday': title = t('昨日流量'); break
     case '7day': title = t('最近7天流量'); break
     case '30day': title = t('最近30天流量'); break
