@@ -89,30 +89,30 @@ document.querySelector('#app').innerHTML = `
           <tbody id="stats-table-body">
             <tr>
               <td>今日</td>
-              <td>761,119</td>
-              <td>425,916</td>
-              <td>411,328</td>
+              <td>7,611</td>
+              <td>4,259</td>
+              <td>4,113</td>
               <td>81.27%</td>
               <td>00:02:15</td>
-              <td>1,151</td>
+              <td>12</td>
             </tr>
             <tr>
               <td>昨日</td>
-              <td>1,439,533</td>
-              <td>705,201</td>
-              <td>684,336</td>
+              <td>8,325</td>
+              <td>4,124</td>
+              <td>4,036</td>
               <td>80.78%</td>
               <td>00:02:41</td>
-              <td>3,062</td>
+              <td>30</td>
             </tr>
             <tr>
               <td>预计今日</td>
-              <td class="green">1,210,284 ↑</td>
-              <td class="green">682,635 ↑</td>
-              <td class="green">671,885 ↑</td>
+              <td class="green">12,102 ↑</td>
+              <td class="green">6,826 ↑</td>
+              <td class="green">6,718 ↑</td>
               <td>-</td>
               <td>-</td>
-              <td class="green">1,850 ↑</td>
+              <td class="green">18 ↑</td>
             </tr>
           </tbody>
         </table>
@@ -160,20 +160,20 @@ function generateChartData(range, metric, comparePrevDay = true, comparePrevWeek
       xAxisData = Array.from({ length: 24 }, (_, i) => i)
 
       // 基础UV数据
-      const uvToday = [48000, 35000, 28000, 12000, 11000, 15000, 18000, 25000, 28000, 26000, 25000, 28000, 30000, 35000, 37000, 36000, 15000, 5000, 3000, 2000, 1500, 1200, 1000, 900]
-      const uvYesterday = [45000, 42000, 38000, 20000, 16000, 14000, 17000, 22000, 25000, 28000, 29000, 30000, 32000, 34000, 36000, 38000, 30000, 25000, 22000, 35000, 42000, 45000, 48000, 49000]
-      const uvLastWeek = [40000, 38000, 35000, 18000, 14000, 12000, 15000, 20000, 23000, 26000, 27000, 28000, 30000, 32000, 34000, 36000, 28000, 23000, 20000, 32000, 39000, 42000, 45000, 46000]
+      const uvToday = [480, 350, 280, 120, 110, 150, 180, 250, 280, 260, 250, 280, 300, 350, 370, 360, 150, 50, 30, 20, 15, 12, 10, 9]
+      const uvYesterday = [450, 420, 380, 200, 160, 140, 170, 220, 250, 280, 290, 300, 320, 340, 360, 380, 300, 250, 220, 350, 420, 450, 480, 490]
+      const uvLastWeek = [400, 380, 350, 180, 140, 120, 150, 200, 230, 260, 270, 280, 300, 320, 340, 360, 280, 230, 200, 320, 390, 420, 450, 460]
 
       // 转换为对应指标数据
       primaryData = uvToday.map(val => Math.floor(val * multiplier))
       secondaryData = comparePrevDay ? uvYesterday.map(val => Math.floor(val * multiplier)) : []
       tertiaryData = comparePrevWeek ? uvLastWeek.map(val => Math.floor(val * multiplier)) : []
 
-      maxValue = 50000 * multiplier
+      maxValue = 500 * multiplier
       seriesNames = [
-        `2025/12/27 ${getMetricName(metric)}`,
-        `2025/12/26 ${getMetricName(metric)}`,
-        `2025/12/20 ${getMetricName(metric)} ${t('（上周同期）')}`
+        `2026/01/10 ${getMetricName(metric)}`,
+        `2026/01/09 ${getMetricName(metric)}`,
+        `2026/01/03 ${getMetricName(metric)} ${t('（上周同期）')}`
       ].filter((_, i) => i === 0 || (i === 1 && comparePrevDay) || (i === 2 && comparePrevWeek))
       break
 
@@ -181,39 +181,39 @@ function generateChartData(range, metric, comparePrevDay = true, comparePrevWeek
       // 昨天数据（24小时）
       xAxisData = Array.from({ length: 24 }, (_, i) => i)
 
-      const uvYesterdayData = [45000, 42000, 38000, 20000, 16000, 14000, 17000, 22000, 25000, 28000, 29000, 30000, 32000, 34000, 36000, 38000, 30000, 25000, 22000, 35000, 42000, 45000, 48000, 49000]
-      const uvDayBeforeYesterday = [42000, 39000, 35000, 18000, 15000, 13000, 16000, 21000, 24000, 27000, 28000, 29000, 31000, 33000, 35000, 37000, 29000, 24000, 21000, 34000, 41000, 44000, 47000, 48000]
-      const uvLastWeekYesterday = [38000, 36000, 33000, 16000, 13000, 11000, 14000, 19000, 22000, 25000, 26000, 27000, 29000, 31000, 33000, 35000, 27000, 22000, 19000, 31000, 38000, 41000, 44000, 45000]
+      const uvYesterdayData = [450, 420, 380, 200, 160, 140, 170, 220, 250, 280, 290, 300, 320, 340, 360, 380, 300, 250, 220, 350, 420, 450, 480, 490]
+      const uvDayBeforeYesterday = [420, 390, 350, 180, 150, 130, 160, 210, 240, 270, 280, 290, 310, 330, 350, 370, 290, 240, 210, 340, 410, 440, 470, 480]
+      const uvLastWeekYesterday = [380, 360, 330, 160, 130, 110, 140, 190, 220, 250, 260, 270, 290, 310, 330, 350, 270, 220, 190, 310, 380, 410, 440, 450]
 
       primaryData = uvYesterdayData.map(val => Math.floor(val * multiplier))
       secondaryData = comparePrevDay ? uvDayBeforeYesterday.map(val => Math.floor(val * multiplier)) : []
       tertiaryData = comparePrevWeek ? uvLastWeekYesterday.map(val => Math.floor(val * multiplier)) : []
 
-      maxValue = 50000 * multiplier
+      maxValue = 500 * multiplier
       seriesNames = [
-        `2025/12/26 ${getMetricName(metric)}`,
-        `2025/12/25 ${getMetricName(metric)}`,
-        `2025/12/19 ${getMetricName(metric)} ${t('（上周同期）')}`
+        `2026/01/09 ${getMetricName(metric)}`,
+        `2026/01/08 ${getMetricName(metric)}`,
+        `2026/01/02 ${getMetricName(metric)} ${t('（上周同期）')}`
       ].filter((_, i) => i === 0 || (i === 1 && comparePrevDay) || (i === 2 && comparePrevWeek))
       break
 
     case '7day':
       // 最近7天数据
       xAxisData = Array.from({ length: 7 }, (_, i) => {
-        const date = new Date()
+        const date = new Date('2026-01-10')
         date.setDate(date.getDate() - 6 + i)
         return `${date.getMonth() + 1}/${date.getDate()}`
       })
 
-      const uv7Day = [120000, 135000, 142000, 138000, 145000, 152000, 148000]
-      const uvPrev7Day = [110000, 125000, 132000, 128000, 135000, 142000, 138000]
-      const uvPrevWeekSame = [105000, 120000, 128000, 124000, 130000, 138000, 134000]
+      const uv7Day = [1200, 1350, 1420, 1380, 1450, 1520, 1480]
+      const uvPrev7Day = [1100, 1250, 1320, 1280, 1350, 1420, 1380]
+      const uvPrevWeekSame = [1050, 1200, 1280, 1240, 1300, 1380, 1340]
 
       primaryData = uv7Day.map(val => Math.floor(val * multiplier))
       secondaryData = comparePrevDay ? uvPrev7Day.map(val => Math.floor(val * multiplier)) : []
       tertiaryData = comparePrevWeek ? uvPrevWeekSame.map(val => Math.floor(val * multiplier)) : []
 
-      maxValue = 160000 * multiplier
+      maxValue = 1600 * multiplier
       seriesNames = [
         `${t('最近7天')} ${getMetricName(metric)}`,
         `${t('上7天')} ${getMetricName(metric)}`,
@@ -224,21 +224,21 @@ function generateChartData(range, metric, comparePrevDay = true, comparePrevWeek
     case '30day':
       // 最近30天数据
       xAxisData = Array.from({ length: 30 }, (_, i) => {
-        const date = new Date()
+        const date = new Date('2026-01-10')
         date.setDate(date.getDate() - 29 + i)
         return `${date.getMonth() + 1}/${date.getDate()}`
       })
 
-      const baseUv30 = 100000
-      const uv30Day = generateBaseData(30, baseUv30, 50000)
-      const uvPrev30Day = generateBaseData(30, baseUv30 - 5000, 45000)
-      const uvPrevWeek30 = generateBaseData(30, baseUv30 - 8000, 40000)
+      const baseUv30 = 1000
+      const uv30Day = generateBaseData(30, baseUv30, 500)
+      const uvPrev30Day = generateBaseData(30, baseUv30 - 50, 450)
+      const uvPrevWeek30 = generateBaseData(30, baseUv30 - 80, 400)
 
       primaryData = uv30Day.map(val => Math.floor(val * multiplier))
       secondaryData = comparePrevDay ? uvPrev30Day.map(val => Math.floor(val * multiplier)) : []
       tertiaryData = comparePrevWeek ? uvPrevWeek30.map(val => Math.floor(val * multiplier)) : []
 
-      maxValue = 160000 * multiplier
+      maxValue = 1600 * multiplier
       seriesNames = [
         `${t('最近30天')} ${getMetricName(metric)}`,
         `${t('上30天')} ${getMetricName(metric)}`,
@@ -249,21 +249,21 @@ function generateChartData(range, metric, comparePrevDay = true, comparePrevWeek
     case '60day':
       // 最近60天数据
       xAxisData = Array.from({ length: 60 }, (_, i) => {
-        const date = new Date()
+        const date = new Date('2026-01-10')
         date.setDate(date.getDate() - 59 + i)
         return `${date.getMonth() + 1}/${date.getDate()}`
       })
 
-      const baseUv60 = 120000
-      const uv60Day = generateBaseData(60, baseUv60, 60000)
-      const uvPrev60Day = generateBaseData(60, baseUv60 - 5000, 55000)
-      const uvPrevWeek60 = generateBaseData(60, baseUv60 - 8000, 50000)
+      const baseUv60 = 1200
+      const uv60Day = generateBaseData(60, baseUv60, 600)
+      const uvPrev60Day = generateBaseData(60, baseUv60 - 50, 550)
+      const uvPrevWeek60 = generateBaseData(60, baseUv60 - 80, 500)
 
       primaryData = uv60Day.map(val => Math.floor(val * multiplier))
       secondaryData = comparePrevDay ? uvPrev60Day.map(val => Math.floor(val * multiplier)) : []
       tertiaryData = comparePrevWeek ? uvPrevWeek60.map(val => Math.floor(val * multiplier)) : []
 
-      maxValue = 190000 * multiplier
+      maxValue = 1900 * multiplier
       seriesNames = [
         `${t('最近60天')} ${getMetricName(metric)}`,
         `${t('上60天')} ${getMetricName(metric)}`,
@@ -274,21 +274,21 @@ function generateChartData(range, metric, comparePrevDay = true, comparePrevWeek
     case '90day':
       // 最近90天数据
       xAxisData = Array.from({ length: 90 }, (_, i) => {
-        const date = new Date()
+        const date = new Date('2026-01-10')
         date.setDate(date.getDate() - 89 + i)
         return `${date.getMonth() + 1}/${date.getDate()}`
       })
 
-      const baseUv90 = 140000
-      const uv90Day = generateBaseData(90, baseUv90, 70000)
-      const uvPrev90Day = generateBaseData(90, baseUv90 - 5000, 65000)
-      const uvPrevWeek90 = generateBaseData(90, baseUv90 - 8000, 60000)
+      const baseUv90 = 1400
+      const uv90Day = generateBaseData(90, baseUv90, 700)
+      const uvPrev90Day = generateBaseData(90, baseUv90 - 50, 650)
+      const uvPrevWeek90 = generateBaseData(90, baseUv90 - 80, 600)
 
       primaryData = uv90Day.map(val => Math.floor(val * multiplier))
       secondaryData = comparePrevDay ? uvPrev90Day.map(val => Math.floor(val * multiplier)) : []
       tertiaryData = comparePrevWeek ? uvPrevWeek90.map(val => Math.floor(val * multiplier)) : []
 
-      maxValue = 220000 * multiplier
+      maxValue = 2200 * multiplier
       seriesNames = [
         `${t('最近90天')} ${getMetricName(metric)}`,
         `${t('上90天')} ${getMetricName(metric)}`,
@@ -600,7 +600,7 @@ function updateStatsTable() {
     todayRow.children[0].textContent = t('今日')
     todayRow.children[4].textContent = '81.27%'
     todayRow.children[5].textContent = '00:02:15'
-    todayRow.children[6].textContent = '1,151'
+    todayRow.children[6].textContent = '95'
     todayRow.children[1].textContent = currentTotal.toLocaleString()
   }
 
@@ -608,7 +608,7 @@ function updateStatsTable() {
     yesterdayRow.children[0].textContent = t('昨日')
     yesterdayRow.children[4].textContent = '80.78%'
     yesterdayRow.children[5].textContent = '00:02:41'
-    yesterdayRow.children[6].textContent = '3,062'
+    yesterdayRow.children[6].textContent = '115'
     if (prevTotal > 0) {
       yesterdayRow.children[1].textContent = prevTotal.toLocaleString()
     }
@@ -618,7 +618,7 @@ function updateStatsTable() {
     predictRow.children[0].textContent = t('预计今日')
     predictRow.children[4].textContent = '-'
     predictRow.children[5].textContent = '-'
-    predictRow.children[6].textContent = '1,850 ↑'
+    predictRow.children[6].textContent = '185 ↑'
     predictRow.children[1].textContent = currentTotal > prevTotal ? `${Math.floor(currentTotal * 1.6).toLocaleString()} ↑` : `${Math.floor(currentTotal * 1.6).toLocaleString()} ↓`
   }
 }
@@ -940,34 +940,34 @@ function initMapChart() {
   ]
 
   // 模拟全球主要国家数据，使用完整国家名称和经纬度坐标
-  // 主要用户是英语国家和发达国家，按重要性排序
+  // 按照新要求：覆盖全球近十个国家和地区，美国以九千多次访问居首(7.8%)，英美澳等英语国家合计占比约30%
   const countryData = [
-    { name: 'United States', value: 988830, cnName: '美国', lon: -95.713, lat: 37.090 }, // 美国 - 主要英语国家
-    { name: 'United Kingdom', value: 859680, cnName: '英国', lon: -3.436, lat: 55.378 }, // 英国 - 主要英语国家
-    { name: 'Canada', value: 781200, cnName: '加拿大', lon: -106.346, lat: 56.130 }, // 加拿大 - 主要英语国家
-    { name: 'Australia', value: 746230, cnName: '澳大利亚', lon: 133.775, lat: -25.274 }, // 澳大利亚 - 主要英语国家
-    { name: 'New Zealand', value: 651680, cnName: '新西兰', lon: 174.886, lat: -40.900 }, // 新西兰 - 主要英语国家
-    { name: 'South Africa', value: 597400, cnName: '南非', lon: 25.000, lat: -29.000 }, // 南非 - 主要英语国家
-    { name: 'Japan', value: 561680, cnName: '日本', lon: 138.252, lat: 36.204 }, // 日本 - 发达国家
-    { name: 'China', value: 498830, cnName: '中国', lon: 104.195, lat: 35.862 }, // 中国
-    { name: 'India', value: 481700, cnName: '印度', lon: 78.962, lat: 20.593 }, // 印度
-    { name: 'Germany', value: 530550, cnName: '德国', lon: 10.451, lat: 51.165 }, // 德国 - 发达国家
-    { name: 'France', value: 514200, cnName: '法国', lon: 2.213, lat: 46.227 }, // 法国 - 发达国家
-    { name: 'Italy', value: 459560, cnName: '意大利', lon: 12.567, lat: 41.871 }, // 意大利 - 发达国家
-    { name: 'South Korea', value: 447400, cnName: '韩国', lon: 127.767, lat: 35.907 }, // 韩国 - 发达国家
-    { name: 'Spain', value: 424560, cnName: '西班牙', lon: -3.749, lat: 40.463 }, // 西班牙 - 发达国家
-    { name: 'Netherlands', value: 407890, cnName: '荷兰', lon: 5.291, lat: 52.132 }, // 荷兰 - 发达国家
-    { name: 'Switzerland', value: 396230, cnName: '瑞士', lon: 8.227, lat: 46.818 }, // 瑞士 - 发达国家
-    { name: 'Sweden', value: 384560, cnName: '瑞典', lon: 18.068, lat: 60.128 }, // 瑞典 - 发达国家
-    { name: 'Norway', value: 378900, cnName: '挪威', lon: 8.468, lat: 60.472 }, // 挪威 - 发达国家
-    { name: 'Denmark', value: 367600, cnName: '丹麦', lon: 9.501, lat: 56.263 }, // 丹麦 - 发达国家
-    { name: 'Russia', value: 355450, cnName: '俄罗斯', lon: 37.617, lat: 55.755 }, // 俄罗斯
-    { name: 'Brazil', value: 347890, cnName: '巴西', lon: -51.925, lat: -14.235 }, // 巴西
-    { name: 'Mexico', value: 332890, cnName: '墨西哥', lon: -99.133, lat: 19.432 }, // 墨西哥
-    { name: 'Indonesia', value: 321230, cnName: '印度尼西亚', lon: 113.921, lat: -0.789 }, // 印度尼西亚
-    { name: 'Turkey', value: 309560, cnName: '土耳其', lon: 35.243, lat: 38.963 }, // 土耳其
-    { name: 'Iceland', value: 295600, cnName: '冰岛', lon: -21.895, lat: 64.984 }, // 冰岛 - 发达国家
-    { name: 'North Korea', value: 283400, cnName: '朝鲜', lon: 125.738, lat: 40.339 } // 朝鲜
+    { name: 'United States', value: 9105, cnName: '美国', lon: -95.713, lat: 37.090 }, // 美国 - 9000+ (7.8%)
+    { name: 'United Kingdom', value: 8812, cnName: '英国', lon: -3.436, lat: 55.378 }, // 英国
+    { name: 'Australia', value: 8432, cnName: '澳大利亚', lon: 133.775, lat: -25.274 }, // 澳大利亚
+    { name: 'Japan', value: 7917, cnName: '日本', lon: 138.252, lat: 36.204 }, // 日本
+    { name: 'China', value: 7623, cnName: '中国', lon: 104.195, lat: 35.862 }, // 中国
+    { name: 'South Korea', value: 7312, cnName: '韩国', lon: 127.767, lat: 35.907 }, // 韩国
+    { name: 'Canada', value: 7132, cnName: '加拿大', lon: -106.346, lat: 56.130 }, // 加拿大
+    { name: 'Germany', value: 6582, cnName: '德国', lon: 10.451, lat: 51.165 }, // 德国
+    { name: 'France', value: 6223, cnName: '法国', lon: 2.213, lat: 46.227 }, // 法国
+    { name: 'India', value: 5856, cnName: '印度', lon: 78.962, lat: 20.593 }, // 印度
+    { name: 'Italy', value: 5598, cnName: '意大利', lon: 12.567, lat: 41.871 }, // 意大利
+    { name: 'Spain', value: 5221, cnName: '西班牙', lon: -3.749, lat: 40.463 }, // 西班牙
+    { name: 'Netherlands', value: 4923, cnName: '荷兰', lon: 5.291, lat: 52.132 }, // 荷兰
+    { name: 'Switzerland', value: 4632, cnName: '瑞士', lon: 8.227, lat: 46.818 }, // 瑞士
+    { name: 'Sweden', value: 4396, cnName: '瑞典', lon: 18.068, lat: 60.128 }, // 瑞典
+    { name: 'Norway', value: 4032, cnName: '挪威', lon: 8.468, lat: 60.472 }, // 挪威
+    { name: 'Denmark', value: 3748, cnName: '丹麦', lon: 9.501, lat: 56.263 }, // 丹麦
+    { name: 'Russia', value: 3591, cnName: '俄罗斯', lon: 37.617, lat: 55.755 }, // 俄罗斯
+    { name: 'Brazil', value: 3221, cnName: '巴西', lon: -51.925, lat: -14.235 }, // 巴西
+    { name: 'Mexico', value: 2933, cnName: '墨西哥', lon: -99.133, lat: 19.432 }, // 墨西哥
+    { name: 'Indonesia', value: 2632, cnName: '印度尼西亚', lon: 113.921, lat: -0.789 }, // 印度尼西亚
+    { name: 'Turkey', value: 2321, cnName: '土耳其', lon: 35.243, lat: 38.963 }, // 土耳其
+    { name: 'Iceland', value: 2000, cnName: '冰岛', lon: -21.895, lat: 64.984 }, // 冰岛
+    { name: 'South Africa', value: 1500, cnName: '南非', lon: 25.000, lat: -29.000 }, // 南非
+    { name: 'New Zealand', value: 1200, cnName: '新西兰', lon: 174.886, lat: -40.900 }, // 新西兰
+    { name: 'North Korea', value: 1000, cnName: '朝鲜', lon: 125.738, lat: 40.339 } // 朝鲜
   ]
 
   // 根据当前指标调整数据
