@@ -619,7 +619,7 @@ function updateStatsTable() {
     predictRow.children[4].textContent = '-'
     predictRow.children[5].textContent = '-'
     predictRow.children[6].textContent = '185 ↑'
-    predictRow.children[1].textContent = currentTotal > prevTotal ? `${Math.floor(currentTotal * 1.6).toLocaleString()} ↑` : `${Math.floor(currentTotal * 1.6).toLocaleString()} ↓`
+    predictRow.children[1].textContent = currentTotal > prevTotal ? `${Math.floor(currentTotal * 1.6).toLocaleString()} ↑` : `${Math.floor(currentTotal * 1.6).toLocaleString()} `
   }
 }
 
